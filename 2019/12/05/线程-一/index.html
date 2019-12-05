@@ -5,13 +5,16 @@
   
 
   
-  <title>Hexo</title>
+  <title>线程(一) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;feng-t.github.io&#x2F;index.html">
+  <meta name="description" content="[TOC] 线程基础线程状态线程的状态又分为五种:  New：新建状态 Runnable：就绪状态 Running：运行状态 Blocked：阻塞状态 Dead：死亡状态  1234567graph TDNew --&amp;gt; RunnableRunnable--&amp;gt;RunningBlocked--&amp;gt;RunnableRunning--&amp;gt;RunnableRunning--&amp;gt;Blo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线程(一)">
+<meta property="og:url" content="http:&#x2F;&#x2F;feng-t.github.io&#x2F;2019&#x2F;12&#x2F;05&#x2F;%E7%BA%BF%E7%A8%8B-%E4%B8%80&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[TOC] 线程基础线程状态线程的状态又分为五种:  New：新建状态 Runnable：就绪状态 Running：运行状态 Blocked：阻塞状态 Dead：死亡状态  1234567graph TDNew --&amp;gt; RunnableRunnable--&amp;gt;RunningBlocked--&amp;gt;RunnableRunning--&amp;gt;RunnableRunning--&amp;gt;Blo">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-05T12:27:16.165Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -59,9 +62,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-线程-一" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-线程-一" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/12/05/%E7%BA%BF%E7%A8%8B-%E4%B8%80/" class="article-date">
   <time datetime="2019-12-05T12:23:15.000Z" itemprop="datePublished">2019-12-05</time>
@@ -74,8 +75,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/05/%E7%BA%BF%E7%A8%8B-%E4%B8%80/">线程(一)</a>
+    <h1 class="article-title" itemprop="name">
+      线程(一)
     </h1>
   
 
@@ -155,60 +156,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-使用一个变量表示多种状态" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/10/17/%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%A4%9A%E7%A7%8D%E7%8A%B6%E6%80%81/" class="article-date">
-  <time datetime="2019-10-16T16:37:30.000Z" itemprop="datePublished">2019-10-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/17/%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%A4%9A%E7%A7%8D%E7%8A%B6%E6%80%81/">使用一个变量表示多种状态</a>
-    </h1>
+    <a href="/2019/10/17/%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%A4%9A%E7%A7%8D%E7%8A%B6%E6%80%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用一个变量表示多种状态</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="枚举与多状态"><a href="#枚举与多状态" class="headerlink" title="枚举与多状态"></a>枚举与多状态</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我们通常会使用一个枚举表示状态，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enum State&#123;</span><br><span class="line">A,</span><br><span class="line">B,</span><br><span class="line">C,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们可以声明一个枚举变量表示一个状态<br><strong>但是：</strong> 如果我要表示多个状态怎么办。这种方式只能解决一个状态的问题。</p>
-<h3 id="二进制的位运算"><a href="#二进制的位运算" class="headerlink" title="二进制的位运算"></a>二进制的位运算</h3><p>枚举的多个状态可以通过二进制的位运算来实现。<br><strong>原理是什么</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> state=<span class="number">0</span>;<span class="comment">//表示一个状态</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>使用 <strong>|</strong> 将每一个状态添加到<code>state</code>里面。如1的二进制是0001，2的二进制为0010。包含两个状态的值为0011。</li>
-<li>使用 <strong>&amp;</strong> 来判断<code>state</code>是否包含此状态，如1000&amp;0101=1000，因为我们是通过每一位是否包含1来判断是否包含这个状态。所以每一个状态必须满足2^n。<br>我们将枚举的每一个值写作2^n，这样每一个值在二进制下只有一位为1，其余为0。<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="枚举声明如下："><a href="#枚举声明如下：" class="headerlink" title="枚举声明如下："></a>枚举声明如下：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> State&#123;</span><br><span class="line">A=<span class="number">0</span>,</span><br><span class="line">B=<span class="number">1</span>&lt;&lt;<span class="number">0</span>,</span><br><span class="line">C=<span class="number">1</span>&lt;&lt;<span class="number">1</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> State state  =<span class="number">0</span>;<span class="comment">//状态</span></span><br></pre></td></tr></table></figure>
-<h4 id="添加状态"><a href="#添加状态" class="headerlink" title="添加状态"></a>添加状态</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">addState</span><span class="params">(State state)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.state = <span class="keyword">this</span>.state | state;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="判断是否包含状态"><a href="#判断是否包含状态" class="headerlink" title="判断是否包含状态"></a>判断是否包含状态</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">includeState</span><span class="params">(State state)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span>.state &amp; state) == state;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="删除状态"><a href="#删除状态" class="headerlink" title="删除状态"></a>删除状态</h4>删除状态需要先判断一下是否存在此状态。然后通过添加状态的取反就可以将状态删除。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">removeState</span><span class="params">(State state)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.state = (~state)&amp;<span class="keyword">this</span>.state;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://feng-t.github.io/2019/10/17/%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%A4%9A%E7%A7%8D%E7%8A%B6%E6%80%81/" data-id="ck3sp4mid0001akbk4unkhub9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
