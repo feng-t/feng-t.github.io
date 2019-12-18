@@ -61,6 +61,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-线程-五" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/18/%E7%BA%BF%E7%A8%8B-%E4%BA%94/" class="article-date">
+  <time datetime="2019-12-18T11:58:03.360Z" itemprop="datePublished">2019-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/18/%E7%BA%BF%E7%A8%8B-%E4%BA%94/">线程-五</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]7</p>
+<h2 id="线程补充"><a href="#线程补充" class="headerlink" title="线程补充"></a>线程补充</h2><h3 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h3><p>调用线程有关的方法使线程进入不同的状态。可以通过调用Thread.getState()来获取线程运行的状态。</p>
+<h3 id="线程组"><a href="#线程组" class="headerlink" title="线程组"></a>线程组</h3><p>可以把线程归属到一个线程组中，线程组可以有线程对象，也可以有线程组，组中还可以有线程。类似嵌套一样。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleEnum</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ThreadGroup group = <span class="keyword">new</span> ThreadGroup(<span class="string">"thread-1"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            Thread thread = <span class="keyword">new</span> Thread(group, () -&gt; &#123;</span><br><span class="line">                System.out.println( ServiceEnum.instance.hashCode());</span><br><span class="line">            &#125;);</span><br><span class="line">            thread.start();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(group.activeCount()+<span class="string">" 个线程正在运行"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> ServiceEnum &#123;</span><br><span class="line">    instance;</span><br><span class="line">    <span class="keyword">private</span> SingleEnum singleEnum;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ServiceEnum</span><span class="params">()</span></span>&#123;</span><br><span class="line">        singleEnum=<span class="keyword">new</span> SingleEnum();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>线程组可以有多级关联，也就是父对象有子对象，子对象再创建子对象。</p>
+<h4 id="线程组自动归属"><a href="#线程组自动归属" class="headerlink" title="线程组自动归属"></a>线程组自动归属</h4><p>如果创建一个线程组却没有指定所属的线程组之后，则线程组会自动归属到当前线程的线程组中。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://feng-t.github.io/2019/12/18/%E7%BA%BF%E7%A8%8B-%E4%BA%94/" data-id="ck4b8s84w0000nobk2qova2jc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-线程-四" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/12/18/%E7%BA%BF%E7%A8%8B-%E5%9B%9B/" class="article-date">
@@ -107,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://feng-t.github.io/2019/12/18/%E7%BA%BF%E7%A8%8B-%E5%9B%9B/" data-id="ck4b1htoc0002a2bkajrc20u5" class="article-share-link">Share</a>
+      <a data-url="http://feng-t.github.io/2019/12/18/%E7%BA%BF%E7%A8%8B-%E5%9B%9B/" data-id="ck4b8s85f0005nobk1kzc8i37" class="article-share-link">Share</a>
       
       
     </footer>
@@ -163,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://feng-t.github.io/2019/12/18/%E7%BA%BF%E7%A8%8B-%E4%B8%89/" data-id="ck4b1htod0003a2bk08xl8nb7" class="article-share-link">Share</a>
+      <a data-url="http://feng-t.github.io/2019/12/18/%E7%BA%BF%E7%A8%8B-%E4%B8%89/" data-id="ck4b8s85d0003nobkbz5tamq7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -225,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://feng-t.github.io/2019/12/17/%E7%BA%BF%E7%A8%8B-%E4%BA%8C/" data-id="ck4b1htoe0004a2bk8gkbfi7g" class="article-share-link">Share</a>
+      <a data-url="http://feng-t.github.io/2019/12/17/%E7%BA%BF%E7%A8%8B-%E4%BA%8C/" data-id="ck4b8s85e0004nobk9ii9gf6r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -323,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://feng-t.github.io/2019/12/05/%E7%BA%BF%E7%A8%8B-%E4%B8%80/" data-id="ck4b1htob0001a2bkcyn1d2ge" class="article-share-link">Share</a>
+      <a data-url="http://feng-t.github.io/2019/12/05/%E7%BA%BF%E7%A8%8B-%E4%B8%80/" data-id="ck4b8s85c0002nobk7h6nchzv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -372,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://feng-t.github.io/2019/10/17/%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%A4%9A%E7%A7%8D%E7%8A%B6%E6%80%81/" data-id="ck4b1hto10000a2bk31us4mop" class="article-share-link">Share</a>
+      <a data-url="http://feng-t.github.io/2019/10/17/%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%A4%9A%E7%A7%8D%E7%8A%B6%E6%80%81/" data-id="ck4b8s8510001nobk6zx8e5vq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -413,6 +455,10 @@
       <ul>
         
           <li>
+            <a href="/2019/12/18/%E7%BA%BF%E7%A8%8B-%E4%BA%94/">线程-五</a>
+          </li>
+        
+          <li>
             <a href="/2019/12/18/%E7%BA%BF%E7%A8%8B-%E5%9B%9B/">线程-四</a>
           </li>
         
@@ -426,10 +472,6 @@
         
           <li>
             <a href="/2019/12/05/%E7%BA%BF%E7%A8%8B-%E4%B8%80/">线程-一</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/17/%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E8%A1%A8%E7%A4%BA%E5%A4%9A%E7%A7%8D%E7%8A%B6%E6%80%81/">使用一个变量表示多种状态</a>
           </li>
         
       </ul>
